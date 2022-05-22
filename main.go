@@ -16,9 +16,6 @@ const (
 	REGION             string = "eu-central-1"
 	S3CREDENTIALID     string = "AKIAYU3HHMJTEBFC2IZC"
 	S3CREDENTIALSECRET string = "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"
-	BASEDIR            string = "temp"
-	BUCKETNAME         string = "omerfruk-buclets"
-	S3AclFullAcces     string = "bucket-owner-full-control"
 )
 
 var Sess = session.Session{}
@@ -42,7 +39,6 @@ func main() {
 	Sess = *sess
 
 	app.Get("/buckets", ListBuckets)
-	app.Get("/folders", ListFolder)
 	app.Get("/create-bucket", CreateBuckets)
 
 	app.Get("/list-bucket-items", ListBucketsItems)
@@ -98,7 +94,7 @@ func CreateBuckets(c *fiber.Ctx) error {
 
 	fmt.Printf("Bucket %q successfully created\n", bucket)
 
-	return c.JSON(bucket)
+	return c.JSON("Bucket created successfuly bucket name: " + bucket)
 }
 
 func ListBucketsItems(c *fiber.Ctx) error {
@@ -233,10 +229,6 @@ func DeleteBucket(c *fiber.Ctx) error {
 
 	fmt.Printf("Bucket %q successfully deleted\n", bucket)
 	return c.JSON("Bucket deleting success")
-}
-
-func ListFolder(c *fiber.Ctx) error {
-	return c.JSON(nil)
 }
 
 func exitErrorf(msg string, args ...interface{}) {
