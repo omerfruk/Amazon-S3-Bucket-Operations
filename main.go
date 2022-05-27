@@ -14,8 +14,8 @@ import (
 
 const (
 	REGION             string = "eu-central-1"
-	S3CREDENTIALID     string = "AKIAYU3HHMJTEBFC2IZC"
-	S3CREDENTIALSECRET string = "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"
+	S3CREDENTIALID     string = "************"
+	S3CREDENTIALSECRET string = "*********************"
 )
 
 var Sess = session.Session{}
